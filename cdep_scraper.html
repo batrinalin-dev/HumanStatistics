@@ -12,12 +12,12 @@
 body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
 .app{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:36px 40px 60px}
-.header{display:flex;align-items:center;gap:16px;margin-bottom:36px;animation:fadeD .5s ease}
+.header{display:flex;align-items:center;gap:16px;margin-bottom:36px}
 .header-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--accent),#818cf8);border-radius:14px;display:grid;place-items:center;font-size:24px;box-shadow:0 0 28px var(--accent-glow);flex-shrink:0}
 .header h1{font-size:22px;font-weight:700;letter-spacing:-.4px}
 .header h1 span{color:var(--accent)}
 .header p{color:var(--text-dim);font-size:13px;margin-top:2px}
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px;margin-bottom:24px;animation:fadeD .55s ease}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px;margin-bottom:24px}
 .panel label{display:block;font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px}
 .input-row{display:flex;gap:12px}
 textarea{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:12.5px;padding:14px 16px;resize:vertical;min-height:88px;line-height:1.75;transition:border-color .2s}
@@ -28,7 +28,7 @@ textarea::placeholder{color:var(--text-dim);opacity:.45}
 .method-row>span{font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.8px}
 .method-radio{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12.5px;color:var(--text)}
 .method-radio input{accent-color:var(--accent)}
-.proxy-input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 12px;width:320px;transition:border-color .2s}
+.proxy-input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 12px;width:320px}
 .proxy-input:focus{outline:none;border-color:var(--border-focus);box-shadow:0 0 0 3px var(--accent-glow)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
 .btn svg{width:15px;height:15px;flex-shrink:0}
@@ -39,17 +39,13 @@ textarea::placeholder{color:var(--text-dim);opacity:.45}
 .btn-out:hover:not(:disabled){background:var(--border);transform:translateY(-1px)}
 .btn-out:disabled{opacity:.25;cursor:not-allowed;transform:none}
 .status{display:none;align-items:center;gap:12px;padding:13px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;font-size:13px}
-.status.vis{display:flex}
-.status.ld{border-color:var(--accent);background:var(--accent-glow)}
-.status.ok{border-color:var(--green);background:var(--green-dim)}
-.status.er{border-color:var(--red);background:var(--red-dim)}
+.status.vis{display:flex}.status.ld{border-color:var(--accent);background:var(--accent-glow)}.status.ok{border-color:var(--green);background:var(--green-dim)}.status.er{border-color:var(--red);background:var(--red-dim)}
 .spin{width:17px;height:17px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
 .status .num{font-family:var(--mono);color:var(--accent);font-weight:500;margin-left:auto}
 .toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.toolbar-l{font-size:13px;color:var(--text-dim)}
-.toolbar-l strong{color:var(--text);font-family:var(--mono)}
+.toolbar-l{font-size:13px;color:var(--text-dim)}.toolbar-l strong{color:var(--text);font-family:var(--mono)}
 .toolbar-r{display:flex;gap:10px}
-.tw{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;animation:fadeU .45s ease}
+.tw{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .ts{overflow-x:auto;max-height:70vh;overflow-y:auto}
 table{width:100%;border-collapse:collapse;font-size:13px}
 thead th{background:var(--surface2);color:var(--text-dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.8px;padding:14px 18px;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:2}
@@ -69,13 +65,9 @@ td.nc{font-weight:600;white-space:nowrap}
 .info-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;font-size:12.5px;color:var(--text-dim);line-height:1.7}
 .info-box code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:11.5px;color:var(--accent)}
 .info-box strong{color:var(--text)}
-.debug-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-top:20px;font-size:11.5px;font-family:var(--mono);color:var(--text-dim);line-height:1.7;max-height:300px;overflow-y:auto;white-space:pre-wrap;display:none}
+.debug-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-top:20px;font-size:11.5px;font-family:var(--mono);color:var(--text-dim);line-height:1.7;max-height:500px;overflow-y:auto;white-space:pre-wrap;display:none}
 .debug-box.vis{display:block}
-@keyframes fadeD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
-@keyframes fadeU{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes sp{to{transform:rotate(360deg)}}
-@keyframes rowIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
-tbody tr{animation:rowIn .25s ease backwards}
 @media(max-width:700px){.app{padding:16px}.input-row{flex-direction:column}.toolbar{flex-direction:column;gap:10px;align-items:flex-start}.method-row{flex-direction:column;gap:8px}}
 </style>
 </head>
@@ -83,23 +75,19 @@ tbody tr{animation:rowIn .25s ease backwards}
 <div class="app">
   <div class="header">
     <div class="header-icon">🏛</div>
-    <div>
-      <h1>CDEP <span>Scraper</span></h1>
-      <p>Extragere date parlamentari — Camera Deputaților</p>
-    </div>
+    <div><h1>CDEP <span>Scraper</span></h1><p>Extragere date parlamentari — Camera Deputaților</p></div>
   </div>
   <div class="info-box">
-    <strong>⚠ Site-ul cdep.ro blochează accesul direct din browser (CORS).</strong> Alegeți o metodă:<br>
-    <strong>① Proxy local (recomandat):</strong> <code>npx cors-anywhere</code> în terminal → <code>http://localhost:8080</code><br>
-    <strong>② Extensie CORS:</strong> Extensia <strong>"Allow CORS"</strong> / <strong>"CORS Unblock"</strong> activată în browser.<br>
-    <strong>③ Proxy public:</strong> Fără instalare, dar poate fi lent/indisponibil.
+    <strong>⚠ cdep.ro blochează accesul direct (CORS).</strong><br>
+    <strong>① Proxy local:</strong> <code>npx cors-anywhere</code> → <code>http://localhost:8080</code><br>
+    <strong>② Extensie CORS:</strong> <strong>"Allow CORS"</strong> / <strong>"CORS Unblock"</strong><br>
+    <strong>③ Proxy public:</strong> Fără instalare, poate fi lent.
   </div>
   <div class="panel">
     <label>Link-uri pagini parlamentari (câte un link pe linie)</label>
     <div class="input-row">
-      <textarea id="inp" placeholder="https://www.cdep.ro/pls/parlam/structura2015.mp?idm=294&cam=2&leg=2020&idl=1
-https://www.cdep.ro/pls/parlam/structura2015.mp?idm=204&cam=2&leg=2020
-..."></textarea>
+      <textarea id="inp" placeholder="https://www.cdep.ro/pls/parlam/structura2015.mp?idm=1&cam=2&leg=2024
+https://www.cdep.ro/pls/parlam/structura2015.mp?idm=204&cam=2&leg=2020"></textarea>
       <button class="btn btn-primary" id="btnGo" onclick="run()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
         Extrage
@@ -112,363 +100,264 @@ https://www.cdep.ro/pls/parlam/structura2015.mp?idm=204&cam=2&leg=2020
       <label class="method-radio"><input type="radio" name="method" value="public" onchange="toggleProxy()"> Proxy public</label>
     </div>
     <div id="proxyRow" style="margin-top:12px">
-      <input class="proxy-input" id="proxyUrl" value="http://localhost:8080/" placeholder="http://localhost:8080/">
+      <input class="proxy-input" id="proxyUrl" value="http://localhost:8080/">
       <span style="font-size:11px;color:var(--text-dim);margin-left:8px">URL proxy local</span>
     </div>
-    <p class="hint">Se selectează comisia cu <strong>cea mai recentă dată de aderare</strong> <code>(din luna anul)</code>. Comisiile încheiate <code>(până în ...)</code> sunt ignorate dacă există comisii active.</p>
+    <p class="hint"><strong>Logică selecție comisie (doar din „Comisii permanente"):</strong><br>
+    ① Se verifică dacă vreo comisie are funcție (Președinte / Vicepreședinte / Secretar) → se alege acea comisie.<br>
+    ② Dacă nicio comisie nu are funcție → se alege comisia cu data cea mai recentă.</p>
   </div>
-  <div class="status" id="st">
-    <div class="spin" id="stSpin"></div>
-    <span id="stTxt"></span>
-    <span class="num" id="stNum"></span>
-  </div>
+  <div class="status" id="st"><div class="spin" id="stSpin"></div><span id="stTxt"></span><span class="num" id="stNum"></span></div>
   <div class="toolbar">
     <div class="toolbar-l" id="cnt"></div>
     <div class="toolbar-r">
-      <button class="btn btn-out" id="bCSV" onclick="expCSV()" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        Export CSV
-      </button>
-      <button class="btn btn-out" id="bXL" onclick="expXL()" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        Export Excel
-      </button>
+      <button class="btn btn-out" id="bCSV" onclick="expCSV()" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>CSV</button>
+      <button class="btn btn-out" id="bXL" onclick="expXL()" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Excel</button>
     </div>
   </div>
-  <div id="out">
-    <div class="empty"><div class="ico">📋</div><h3>Niciun rezultat</h3><p>Introduceți link-uri și apăsați „Extrage" pentru a începe.</p></div>
-  </div>
+  <div id="out"><div class="empty"><div class="ico">📋</div><h3>Niciun rezultat</h3><p>Introduceți link-uri și apăsați „Extrage".</p></div></div>
   <div class="debug-box" id="dbg"></div>
 </div>
 
 <script>
-/* ═══ MAPPINGS ═══ */
 const COM_KW={
-  0:["agricultura","silvicultur"],1:["buget","finant","financ","banci","bănci"],
-  2:["cultura","arta","artă","informational"],3:["aparar","apărar","ordine publica","ordine publică","sigurant","siguranț"],
-  4:["economi","reforma","reform","privatiz","antreprenoriat"],5:["educati","educaț","stiint","științ","tineret","sport"],
-  6:["externe","afaceri externe"],7:["sanat","sănătat","familie"],
-  8:["drepturile omului","culte","minorit"],9:["industri","servicii"],
-  10:["justiti","justiți","contestat"],11:["ordine de drept","ordinii de drept"],
-  12:["administratie","administrați","mediu"],13:["munca","muncă","muncii","protecti","protecți","sociala","socială"],
-  14:["integrar","european"],16:["abuz","corupti","corupți","petiti","petiți"],
-  17:["egalitat","sanse","șanse"],18:["tehnologi","informati","comunicati"],
-  19:["regulament"],20:["juridic","disciplin","imunitat"],21:["regulamente"],
-  22:["centenar"],23:["spatiu","spațiu","subcomisi"],24:["revizuir","constitut"],
-  25:["revoluti","revoluți","1989"],26:["transport","energi","infrastructur"],
-  27:["diaspora"],28:["SIE","controlul activit"],
+  0:["agricultura","silvicultur"],1:["buget","finant","financ","banci","banc"],
+  2:["cultura","arta","informational"],3:["aparar","ordine publica","sigurant"],
+  4:["economi","reforma","reform","privatiz","antreprenoriat"],
+  5:["educati","stiint","tineret","sport"],6:["externe","afaceri externe"],
+  7:["sanat","familie"],8:["drepturile omului","culte","minorit"],
+  9:["industri","servicii"],10:["justiti","contestat"],
+  11:["ordine de drept","ordinii de drept"],12:["administratie","mediu"],
+  13:["munca","muncii","protecti","sociala"],14:["integrar","european"],
+  16:["abuz","corupti","petiti"],17:["egalitat","sanse"],
+  18:["tehnologi","informati","comunicati"],19:["regulament"],
+  20:["juridic","disciplin","imunitat"],21:["regulamente"],22:["centenar"],
+  23:["spatiu","subcomisi"],24:["revizuir"],
+  25:["revoluti","1989"],26:["transport","energi","infrastructur"],
+  27:["diaspora"],28:["SIE","controlul activit"],29:["constitutionalitate"],
 };
-const COM_NAME={0:"Agricultură",1:"Buget/Finanțe",2:"Cultură",3:"Apărare",4:"Economie",5:"Educație",6:"Afaceri externe",7:"Sănătate",8:"Drepturile omului",9:"Industrie",10:"Justiție",11:"Ordine de drept",12:"Admin. publică",13:"Muncă",14:"Integrare EU",15:"Fără comisie",16:"Abuzuri/Corupție",17:"Egalitate șanse",18:"IT&C",19:"Regulament",20:"Juridică",21:"Regulamente",22:"Centenar",23:"Spațiu",24:"Revizuire Const.",25:"Revoluția 1989",26:"Transport/Energie",27:"Diaspora",28:"Control SIE",99:"Fără date"};
+const COM_NAME={0:"Agricultură",1:"Buget/Finanțe",2:"Cultură",3:"Apărare",4:"Economie",5:"Educație",6:"Afaceri externe",7:"Sănătate",8:"Drepturile omului",9:"Industrie",10:"Justiție",11:"Ordine de drept",12:"Admin. publică",13:"Muncă",14:"Integrare EU",15:"Fără comisie",16:"Abuzuri/Corupție",17:"Egalitate șanse",18:"IT&C",19:"Regulament",20:"Juridică",21:"Regulamente",22:"Centenar",23:"Spațiu",24:"Revizuire Const.",25:"Revoluția 1989",26:"Transport/Energie",27:"Diaspora",28:"Control SIE",29:"Constituționalitate",99:"Fără date"};
 const ROLE_NAME={0:"Fără funcție",1:"Președinte",2:"Vicepreședinte",3:"Secretar"};
-
-/* ═══ MONTH PARSER ═══ */
 const MO={"ian":1,"ianuarie":1,"feb":2,"februarie":2,"mar":3,"martie":3,"apr":4,"aprilie":4,"mai":5,"iun":6,"iunie":6,"iul":7,"iulie":7,"aug":8,"august":8,"sep":9,"sept":9,"septembrie":9,"oct":10,"octombrie":10,"nov":11,"noiembrie":11,"dec":12,"decembrie":12};
 
+/*
+ * Strip ALL diacritics using NFKD decomposition.
+ * Works regardless of encoding issues (ă, â, î, ş, ţ, ș, ț, ã, etc.)
+ * "Comisia pentru muncă şi protecţie socială" → "comisia pentru munca si protectie sociala"
+ */
+function flat(s){
+  // Step 1: Known Romanian replacements (handles both old and new diacritics)
+  s=s.replace(/\u015f/g,"s").replace(/\u015e/g,"S"); // ş→s
+  s=s.replace(/\u0163/g,"t").replace(/\u0162/g,"T"); // ţ→t
+  s=s.replace(/[șȘ]/g,"s").replace(/[țȚ]/g,"t");
+  s=s.replace(/[ăĂ]/g,"a").replace(/[âÂ]/g,"a").replace(/[îÎ]/g,"i");
+  // Step 2: NFKD decomposition strips remaining accents (ã→a, é→e, etc.)
+  s=s.normalize("NFKD").replace(/[\u0300-\u036f]/g,"");
+  return s.toLowerCase();
+}
+
+function norm(s){return s.replace(/\u015f/g,"ș").replace(/\u015e/g,"Ș").replace(/\u0163/g,"ț").replace(/\u0162/g,"Ț")}
+
+function detectRole(text){
+  const n=flat(text);
+  let role=0;
+  if(/vicepresedinte/.test(n)) role=2;
+  if(/(?<!vice)presedinte/.test(n)) role=1;
+  if(/secretar/.test(n)&&role===0) role=3;
+  return role;
+}
 function parseRoDate(str){
   if(!str)return 0;
-  const s=str.toLowerCase().replace(/\./g,"").trim();
-  const m=s.match(/([a-zăâîșț]+)\s*(\d{4})/);
+  const s=flat(str).replace(/\./g,"").trim();
+  const m=s.match(/([a-z]+)\s*(\d{4})/);
   if(!m)return 0;
   const mon=MO[m[1]],yr=parseInt(m[2]);
   return(mon&&yr)?yr*100+mon:0;
 }
-
-let results=[], debugLog=[];
-
-/* ═══ NETWORK ═══ */
-function toggleProxy(){
-  document.getElementById("proxyRow").style.display=
-    document.querySelector('input[name="method"]:checked').value==="proxy"?"block":"none";
-}
-const PUB_PX=[
-  u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  u=>`https://corsproxy.io/?${encodeURIComponent(u)}`,
-  u=>`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-];
-async function grab(url){
-  const method=document.querySelector('input[name="method"]:checked').value;
-  if(method==="direct"){
-    const r=await fetch(url,{signal:AbortSignal.timeout(25000)});
-    if(!r.ok)throw new Error(`HTTP ${r.status}`);return await r.text();
-  }
-  if(method==="proxy"){
-    let base=document.getElementById("proxyUrl").value.trim();
-    if(!base.endsWith("/"))base+="/";
-    const r=await fetch(base+url,{signal:AbortSignal.timeout(25000)});
-    if(!r.ok)throw new Error(`Proxy → HTTP ${r.status}`);return await r.text();
-  }
-  for(const pf of PUB_PX){
-    try{const r=await fetch(pf(url),{signal:AbortSignal.timeout(20000)});
-      if(r.ok){const t=await r.text();if(t.length>200)return t;}}catch(e){}
-  }
-  throw new Error("Proxy-urile publice au eșuat");
-}
-
-/* ═══ PARSING ═══ */
-function parseDoc(h){return new DOMParser().parseFromString(h,"text/html")}
-
-function getName(doc){
-  const title=doc.querySelector("title");
-  if(title){const t=title.textContent.trim();if(t.length>3&&t.length<60&&!/(camera|cdep|parlament|legislat)/i.test(t))return t;}
-  for(const tag of["h1","h2","h3"]){for(const el of doc.querySelectorAll(tag)){const t=el.textContent.trim();if(t.length>4&&t.length<80&&!/(camera|comisi|parlament|structur|legislat)/i.test(t))return t;}}
-  for(const b of doc.querySelectorAll("b,strong")){const t=b.textContent.trim();if(t.length>4&&t.length<60&&/^[A-ZĂÂÎȘȚ]/.test(t))return t;}
-  return "Necunoscut";
-}
-
 function idCom(text){
-  const low=text.toLowerCase();let best=null,bestN=0;
+  const low=flat(text);
+  let best=null,bestN=0;
   for(const[code,kws]of Object.entries(COM_KW)){
-    const n=kws.filter(k=>low.includes(k.toLowerCase())).length;
+    const n=kws.filter(k=>low.includes(k)).length;
     if(n>bestN){bestN=n;best=parseInt(code);}
   }
   return best;
 }
 
+let results=[],debugLog=[];
+
+function toggleProxy(){document.getElementById("proxyRow").style.display=document.querySelector('input[name="method"]:checked').value==="proxy"?"block":"none"}
+const PUB_PX=[u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,u=>`https://corsproxy.io/?${encodeURIComponent(u)}`,u=>`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`];
+
 /*
- * ═══════════════════════════════════════════════════════════
- * CORE: Parse committees from actual HTML structure
- * ═══════════════════════════════════════════════════════════
- *
- * cdep.ro HTML structure (real):
- *
- *   <a href="...structura2015.co?idc=1&...">Comisia pentru politică economică...</a>
- *   (din  feb. 2023)
- *   <br>
- *   <a href="...structura2015.co?idc=34&...">Comisia pentru transporturi...</a>
- *   (din  iun. 2023)
- *   <br>
- *   <a href="...structura2015.co?idc=34&...">Comisia pentru transporturi...</a>
- *   (până în  feb. 2021)
- *
- * And for roles:
- *   <a href="...">Comisia X</a> (din feb. 2021)
- *   - Președinte (feb. 2021 - sep. 2023), Secretar (din sep. 2023)
- *
- * Strategy:
- *   1. Find all <a> with href containing "structura2015.co"
- *   2. For each <a>, get the committee name from link text
- *   3. Get the text AFTER the </a> up to the next <a> or <br>
- *      → this contains "(din feb. 2023)" and optional "- Președinte ..."
- *   4. Parse date and role from that trailing text
- *   5. Filter: only "din" entries (active), ignore "până în" (ended)
- *   6. Pick the one with the most recent "din" date
+ * Fetch with encoding detection.
+ * Tries UTF-8 first, if garbled (replacement char U+FFFD) falls back to ISO-8859-2/Windows-1252.
+ */
+async function grab(url){
+  const method=document.querySelector('input[name="method"]:checked').value;
+  let resp;
+  if(method==="direct"){resp=await fetch(url,{signal:AbortSignal.timeout(25000)});if(!resp.ok)throw new Error(`HTTP ${resp.status}`);}
+  else if(method==="proxy"){let base=document.getElementById("proxyUrl").value.trim();if(!base.endsWith("/"))base+="/";resp=await fetch(base+url,{signal:AbortSignal.timeout(25000)});if(!resp.ok)throw new Error(`Proxy → HTTP ${resp.status}`);}
+  else{
+    for(const pf of PUB_PX){try{resp=await fetch(pf(url),{signal:AbortSignal.timeout(20000)});if(resp.ok)break;resp=null;}catch(e){resp=null;}}
+    if(!resp)throw new Error("Proxy-urile publice au eșuat");
+  }
+  // Try to decode with correct encoding
+  const buf=await resp.arrayBuffer();
+  // Try UTF-8 first
+  let text=new TextDecoder("utf-8").decode(buf);
+  // Check for garbled chars (replacement character U+FFFD)
+  if(text.includes("\uFFFD")){
+    debugLog.push("  ⚠ UTF-8 garbled, trying ISO-8859-2...");
+    text=new TextDecoder("iso-8859-2").decode(buf);
+  }
+  return text;
+}
+
+function getName(doc){
+  const title=doc.querySelector("title");
+  if(title){const t=title.textContent.trim();if(t.length>3&&t.length<60&&!/(camera|cdep|parlament|legislat)/i.test(t))return t;}
+  for(const tag of["h1","h2","h3"]){for(const el of doc.querySelectorAll(tag)){const t=el.textContent.trim();if(t.length>4&&t.length<80&&!/(camera|comisi|parlament|structur|legislat)/i.test(t))return t;}}
+  return "Necunoscut";
+}
+
+/*
+ * Parse committees from "Comisii permanente" section.
+ * DOM-based: find h3 → parent .boxDep → walk <a> siblings.
+ * Uses flat() for diacritic-proof keyword matching.
  */
 function getCommittee(doc, mpName){
-  const log = [];
-  const entries = [];
+  const log=[];
 
-  // Find all committee links
-  const links = doc.querySelectorAll('a[href*="structura2015.co"]');
-
-  if(links.length > 0){
-    log.push(`  Găsite ${links.length} link-uri de comisii în HTML`);
-
-    for(const a of links){
-      const comName = a.textContent.trim();
-      const code = idCom(comName);
-      if(code === null){
-        log.push(`  ⊘ Skip (cod necunoscut): "${comName}"`);
-        continue;
-      }
-
-      // Get ALL text after this <a> until the next <a> or block boundary
-      // Walk sibling nodes after this <a>
-      let trailingText = "";
-      let node = a.nextSibling;
-      while(node){
-        if(node.nodeType === Node.TEXT_NODE){
-          trailingText += node.textContent;
-        } else if(node.nodeType === Node.ELEMENT_NODE){
-          // Stop at next <a> link (next committee) or <br> separators
-          if(node.tagName === "A") break;
-          // But include text from inline elements like <br>
-          if(node.tagName === "BR"){
-            // Check if next meaningful content is another <a>
-            // (br is just a separator, keep scanning)
-            // but do break the trailing text here
-            break;
-          }
-          trailingText += node.textContent;
-        }
-        node = node.nextSibling;
-      }
-
-      trailingText = trailingText.trim();
-
-      // Parse date from trailing text
-      // Patterns:
-      //   "(din  feb. 2023)"           → active, joinDate=202302
-      //   "(din  iun. 2023)"           → active, joinDate=202306
-      //   "(până în  feb. 2021)"       → ended, joinDate=0
-      //   "(feb. 2021 - apr. 2022)"    → ended, joinDate from start
-      let joinDate = 0;
-      let isActive = false;
-
-      // Check for "(din ...)"
-      const dinMatch = trailingText.match(/\(\s*din\s+([^)]+)\)/i);
-      if(dinMatch){
-        joinDate = parseRoDate(dinMatch[1]);
-        isActive = true;
-      }
-
-      // Check for "(până în ...)" → ended
-      const panaMatch = trailingText.match(/\(\s*pân[aă]\s+[iî]n\s+([^)]+)\)/i);
-      if(panaMatch){
-        isActive = false;
-        joinDate = 0; // no clear start date
-      }
-
-      // Check for "(month year - month year)" → range, ended
-      const rangeMatch = trailingText.match(/\(\s*([a-zăâîșț]+\.?\s*\d{4})\s*-\s*([a-zăâîșț]+\.?\s*\d{4})\s*\)/i);
-      if(rangeMatch && !dinMatch){
-        joinDate = parseRoDate(rangeMatch[1]);
-        isActive = false;
-      }
-
-      // Parse role from trailing text
-      // Pattern: "- Președinte (...), Secretar (...), Președinte (din ...)"
-      // Take the LAST role mentioned (current one)
-      let role = 0;
-      const roleText = trailingText.toLowerCase();
-      // Split by comma to find individual role segments
-      const roleSegments = roleText.split(/,/);
-      for(const seg of roleSegments){
-        if(/pre[sş]edinte/i.test(seg) && !/vicepre[sş]edinte/i.test(seg)) role = 1;
-        else if(/vicepre[sş]edinte/i.test(seg)) role = 2;
-        else if(/secretar/i.test(seg)) role = 3;
-      }
-
-      const entry = {
-        code, role, joinDate, isActive,
-        name: comName.substring(0, 70),
-        raw: trailingText.substring(0, 80)
-      };
-      entries.push(entry);
-
-      log.push(`  ${isActive ? "✅ ACTIV" : "⛔ ÎNCHEIAT"}  cod=${code} (${COM_NAME[code]})  data=${joinDate}  rol=${role}  "${comName.substring(0,50)}..." → "${trailingText.substring(0,50)}"`);
+  let box=null;
+  for(const h3 of doc.querySelectorAll("h3")){
+    if(/comisii\s+permanente/i.test(h3.textContent.normalize("NFKD"))){
+      box=h3.closest(".boxDep")||h3.parentElement;
+      break;
     }
   }
+  if(!box){
+    log.push(`❌ <h3>Comisii permanente</h3> negăsit`);
+    debugLog.push(`\n▸ ${mpName}:`);log.forEach(l=>debugLog.push("  "+l));
+    debugLog.push("  → cod=99 funcție=0");
+    return{comisie:99,functie:0};
+  }
+  log.push(`✅ Secțiune găsită (tag=${box.tagName}, class="${box.className}")`);
 
-  // Fallback: text-based parsing if no links found
-  if(entries.length === 0){
-    log.push("  ⚠ Niciun link structura2015.co găsit, se folosește fallback text");
-    const fullText = doc.body?.textContent || "";
-    const comRegex = /Comisia\s+(?:pentru\s+|de\s+|privind\s+)?[^\n]{5,}/gi;
-    for(const m of [...fullText.matchAll(comRegex)]){
-      const block = m[0];
-      const code = idCom(block);
-      if(code === null) continue;
-      const dinM = block.match(/\(\s*din\s+([^)]+)\)/i);
-      const joinDate = dinM ? parseRoDate(dinM[1]) : 0;
-      const isActive = !!dinM;
-      let role = 0;
-      const segs = block.toLowerCase().split(/,/);
-      for(const seg of segs){
-        if(/pre[sş]edinte/i.test(seg) && !/vicepre[sş]edinte/i.test(seg)) role = 1;
-        else if(/vicepre[sş]edinte/i.test(seg)) role = 2;
-        else if(/secretar/i.test(seg)) role = 3;
-      }
-      entries.push({code, role, joinDate, isActive, name: block.substring(0,70), raw: ""});
-      log.push(`  [fallback] cod=${code} data=${joinDate} rol=${role} activ=${isActive}`);
-    }
+  const links=[...box.querySelectorAll('a[href*="structura2015.co"]')];
+  log.push(`Link-uri <a>: ${links.length}`);
+
+  if(!links.length){
+    debugLog.push(`\n▸ ${mpName}:`);log.forEach(l=>debugLog.push("  "+l));
+    debugLog.push("  → cod=99 funcție=0");
+    return{comisie:99,functie:0};
   }
 
-  debugLog.push(`\n▸ ${mpName}: ${entries.length} comisii`);
-  log.forEach(l => debugLog.push(l));
+  const entries=[];
+  for(let i=0;i<links.length;i++){
+    const a=links[i];
+    const comName=a.textContent.trim();
+    const comFlat=flat(comName);
+    const code=idCom(comName);
+
+    let trail="";
+    let node=a.nextSibling;
+    while(node){
+      if(node.nodeType===Node.TEXT_NODE) trail+=node.textContent;
+      else if(node.nodeType===Node.ELEMENT_NODE){
+        if(node.tagName==="A"&&(node.getAttribute("href")||"").includes("structura2015.co")) break;
+        if(node.tagName!=="BR") trail+=node.textContent;
+      }
+      node=node.nextSibling;
+    }
+    trail=trail.trim();
+
+    const role=detectRole(trail);
+
+    log.push(`  ${i+1}. "${comFlat.substring(0,55)}" → cod=${code!==null?code:"NULL"}`);
+    log.push(`     trail="${trail.substring(0,60)}" role=${role}(${ROLE_NAME[role]||"?"})`);
+
+    if(code===null){log.push(`     ⊘ SKIP`);continue;}
+
+    let joinDate=0,isActive=true;
+    const trailF=flat(trail);
+    const dinM=trailF.match(/\bdin\s+([a-z]+\.?\s*\d{4})/);
+    if(dinM){joinDate=parseRoDate(dinM[1]);isActive=true;}
+    const panaM=trailF.match(/pana\s+in\s+([a-z]+\.?\s*\d{4})/);
+    if(panaM){isActive=false;joinDate=0;}
+    if(!dinM&&!panaM){
+      const rangeM=trailF.match(/([a-z]+\.?\s*\d{4})\s*-\s*([a-z]+\.?\s*\d{4})/);
+      if(rangeM){joinDate=parseRoDate(rangeM[1]);isActive=false;}
+    }
+
+    entries.push({code,role,joinDate,isActive,name:comName});
+    log.push(`     → [${code}] ${COM_NAME[code]} data=${joinDate} active=${isActive}`);
+  }
+
+  debugLog.push(`\n▸ ${mpName}: ${entries.length} comisii permanente (din ${links.length} link-uri)`);
+  log.forEach(l=>debugLog.push("  "+l));
 
   if(!entries.length){
-    debugLog.push("  → REZULTAT: 99 (fără date)");
-    return {comisie: 99, functie: 0};
+    debugLog.push("  → cod=99 funcție=0");
+    return{comisie:99,functie:0};
   }
 
-  // ── SELECTION LOGIC ──
-  // Step 1: prefer ACTIVE committees (those with "din ...")
-  let candidates = entries.filter(e => e.isActive);
-  if(!candidates.length) candidates = entries;
+  // P1: Vreo comisie are funcție?
+  const withRole=entries.filter(e=>e.role>0);
+  if(withRole.length>0){
+    withRole.sort((a,b)=>a.role-b.role);
+    const w=withRole[0];
+    debugLog.push(`  ─── P1: FUNCȚIE GĂSITĂ ───`);
+    debugLog.push(`  → ${ROLE_NAME[w.role]} la [${w.code}] ${COM_NAME[w.code]}`);
+    return{comisie:w.code,functie:w.role};
+  }
 
-  // Step 2: sort by joinDate DESCENDING (most recent first)
-  candidates.sort((a, b) => b.joinDate - a.joinDate);
-
-  const winner = candidates[0];
-  debugLog.push(`  → SELECTAT: cod=${winner.code} (${COM_NAME[winner.code]}) data=${winner.joinDate} rol=${winner.role} "${winner.name}"`);
-
-  return {comisie: winner.code, functie: winner.role};
+  // P2: Nicio funcție → cea mai recentă dată
+  debugLog.push(`  ─── P2: NICIO FUNCȚIE ───`);
+  let cands=entries.filter(e=>e.isActive);
+  if(!cands.length)cands=entries;
+  cands.sort((a,b)=>b.joinDate-a.joinDate);
+  const w=cands[0];
+  debugLog.push(`  → [${w.code}] ${COM_NAME[w.code]} (data=${w.joinDate}) funcție=0`);
+  return{comisie:w.code,functie:0};
 }
 
 async function processURL(url){
-  const html = await grab(url);
-  const doc = parseDoc(html);
-  const name = getName(doc);
-  const {comisie, functie} = getCommittee(doc, name);
-  return {
-    nume: name, comisie,
-    comisie_label: COM_NAME[comisie] || "Fără date",
-    functie,
-    functie_label: ROLE_NAME[functie] || "Fără funcție",
-    url,
-  };
+  const rawHTML=await grab(url);
+  const doc=new DOMParser().parseFromString(rawHTML,"text/html");
+  const name=getName(doc);
+  const{comisie,functie}=getCommittee(doc,name);
+  return{nume:name,comisie,comisie_label:COM_NAME[comisie]||"Fără date",functie,functie_label:ROLE_NAME[functie]||"Fără funcție",url};
 }
 
-/* ═══ MAIN ═══ */
 async function run(){
-  const raw = document.getElementById("inp").value.trim();
-  if(!raw) return;
-  const urls = raw.split(/\n/).map(l => l.trim()).filter(l => l.startsWith("http"));
+  const raw=document.getElementById("inp").value.trim();if(!raw)return;
+  const urls=raw.split(/\n/).map(l=>l.trim()).filter(l=>l.startsWith("http"));
   if(!urls.length){setSt("er","Nu s-au găsit link-uri valide.");return;}
-
-  document.getElementById("btnGo").disabled = true;
-  results = []; debugLog = ["═══ LOG PROCESARE ═══"];
+  document.getElementById("btnGo").disabled=true;
+  results=[];debugLog=["═══ LOG PROCESARE ═══","","P1: Comisie cu funcție → se alege acea comisie","P2: Nicio funcție → cea mai recentă dată",""];
   setSt("ld","Se procesează...",`0 / ${urls.length}`);
-
-  for(let i = 0; i < urls.length; i++){
-    try{
-      updSt(`${urls[i].substring(0,60)}...`, `${i+1} / ${urls.length}`);
-      results.push(await processURL(urls[i]));
-    }catch(e){
-      results.push({nume:"❌ Eroare",comisie:99,comisie_label:e.message.substring(0,50),functie:0,functie_label:"—",url:urls[i]});
-      debugLog.push(`\n▸ EROARE ${urls[i]}: ${e.message}`);
-    }
-    render(results);
-    if(i < urls.length - 1) await new Promise(r => setTimeout(r, 600));
+  for(let i=0;i<urls.length;i++){
+    try{updSt(`${urls[i].substring(0,60)}...`,`${i+1} / ${urls.length}`);results.push(await processURL(urls[i]));}
+    catch(e){results.push({nume:"❌ Eroare",comisie:99,comisie_label:e.message.substring(0,50),functie:0,functie_label:"—",url:urls[i]});debugLog.push(`\n▸ EROARE: ${e.message}`);}
+    render(results);if(i<urls.length-1)await new Promise(r=>setTimeout(r,600));
   }
-
   setSt("ok",`Finalizat! ${results.length} parlamentari procesați.`);
-  document.getElementById("bCSV").disabled = false;
-  document.getElementById("bXL").disabled = false;
-  document.getElementById("btnGo").disabled = false;
-  const dbg = document.getElementById("dbg");
-  dbg.textContent = debugLog.join("\n");
-  dbg.classList.add("vis");
+  document.getElementById("bCSV").disabled=false;document.getElementById("bXL").disabled=false;document.getElementById("btnGo").disabled=false;
+  const dbg=document.getElementById("dbg");dbg.textContent=debugLog.join("\n");dbg.classList.add("vis");
 }
 
-/* ═══ RENDER ═══ */
 function render(data){
-  document.getElementById("cnt").innerHTML = `<strong>${data.length}</strong> rezultate`;
+  document.getElementById("cnt").innerHTML=`<strong>${data.length}</strong> rezultate`;
   if(!data.length){document.getElementById("out").innerHTML=`<div class="empty"><div class="ico">📋</div><h3>Niciun rezultat</h3><p>Introduceți link-uri și apăsați „Extrage".</p></div>`;return;}
   let h=`<div class="tw"><div class="ts"><table><thead><tr><th style="width:40%">Nume</th><th style="width:36%">Comisie</th><th style="width:24%">Funcție</th></tr></thead><tbody>`;
-  for(const r of data){
-    const rc = r.functie === 0 ? "b-role none" : "b-role";
-    h += `<tr><td class="nc">${esc(r.nume)}</td><td><span class="badge b-com">${r.comisie} — ${esc(r.comisie_label)}</span></td><td><span class="badge ${rc}">${r.functie} — ${esc(r.functie_label)}</span></td></tr>`;
-  }
-  h += `</tbody></table></div></div>`;
-  document.getElementById("out").innerHTML = h;
+  for(const r of data){h+=`<tr><td class="nc">${esc(r.nume)}</td><td><span class="badge b-com">${r.comisie} — ${esc(r.comisie_label)}</span></td><td><span class="badge ${r.functie===0?"b-role none":"b-role"}">${r.functie} — ${esc(r.functie_label)}</span></td></tr>`;}
+  h+=`</tbody></table></div></div>`;document.getElementById("out").innerHTML=h;
 }
 
-/* ═══ EXPORT ═══ */
-function expCSV(){
-  if(!results.length) return;
-  const rows = results.map(r => [r.nume, r.comisie, r.functie].map(v => `"${String(v).replace(/"/g,'""')}"`).join(","));
-  dl("\uFEFF" + "Nume,Comisie,Funcție\n" + rows.join("\n"), "parlamentari.csv", "text/csv;charset=utf-8;");
-}
-function expXL(){
-  if(!results.length) return;
-  const ws = XLSX.utils.aoa_to_sheet([["Nume","Comisie","Funcție"], ...results.map(r => [r.nume, r.comisie, r.functie])]);
-  ws['!cols'] = [{wch:35},{wch:12},{wch:12}];
-  const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Parlamentari");
-  XLSX.writeFile(wb, "parlamentari.xlsx");
-}
+function expCSV(){if(!results.length)return;dl("\uFEFF"+"Nume,Comisie,Funcție\n"+results.map(r=>[r.nume,r.comisie,r.functie].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n"),"parlamentari.csv","text/csv;charset=utf-8;")}
+function expXL(){if(!results.length)return;const ws=XLSX.utils.aoa_to_sheet([["Nume","Comisie","Funcție"],...results.map(r=>[r.nume,r.comisie,r.functie])]);ws['!cols']=[{wch:35},{wch:12},{wch:12}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Parlamentari");XLSX.writeFile(wb,"parlamentari.xlsx")}
 
-/* ═══ UTILS ═══ */
 function esc(s){const d=document.createElement("div");d.textContent=String(s);return d.innerHTML}
 function dl(c,f,t){const b=new Blob([c],{type:t}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=f;a.click();URL.revokeObjectURL(a.href)}
 function setSt(type,txt,num){const b=document.getElementById("st");b.className=`status vis ${type}`;document.getElementById("stTxt").textContent=txt;document.getElementById("stNum").textContent=num||"";document.getElementById("stSpin").style.display=type==="ld"?"block":"none"}
