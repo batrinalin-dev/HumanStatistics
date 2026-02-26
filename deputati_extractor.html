@@ -252,7 +252,7 @@
   <div class="stats-row" id="statsRow" style="display:none;">
     <div class="stat-card"><div class="stat-num" id="totalCount">0</div><div class="stat-label">Total Deputați</div></div>
     <div class="stat-card"><div class="stat-num" id="partyCount">0</div><div class="stat-label">Partide / Grupuri</div></div>
-    <div class="stat-card"><div class="stat-num" id="regionCount">0</div><div class="stat-label">Regiuni</div></div>
+    <div class="stat-card"><div class="stat-num" id="regionCount">0</div><div class="stat-label">Regiuni (1-8)</div></div>
     <div class="stat-card"><div class="stat-num" id="circCount">0</div><div class="stat-label">Circumscripții</div></div>
   </div>
 
@@ -290,7 +290,7 @@
             <th onclick="sortBy('idx')"># <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('name')">Nume <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('party')">Grup parlamentar <span class="sort-icon">↕</span></th>
-            <th onclick="sortBy('region')">Regiune <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy('regionCode')">Cod Regiune <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('circ')">Circumscripție <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
@@ -327,24 +327,65 @@
   const perPage = 50;
 
   // ============================================================
-  // CIRCUMSCRIPȚIE → REGIUNE MAP (Romanian counties by number)
+  // REGIUNI DE DEZVOLTARE (NUTS 2) — codare 1-8, 99=fără date
   // ============================================================
-  const CIRC_TO_REGION = {
-    '1': 'Alba', '2': 'Arad', '3': 'Argeș', '4': 'Bacău',
-    '5': 'Bihor', '6': 'Bistrița-Năsăud', '7': 'Botoșani', '8': 'Brașov',
-    '9': 'Brăila', '10': 'Buzău', '11': 'Caraș-Severin', '12': 'Cluj',
-    '13': 'Constanța', '14': 'Covasna', '15': 'Dâmbovița', '16': 'Dolj',
-    '17': 'Galați', '18': 'Gorj', '19': 'Harghita', '20': 'Hunedoara',
-    '21': 'Ialomița', '22': 'Iași', '23': 'Ilfov', '24': 'Maramureș',
-    '25': 'Mehedinți', '26': 'Mureș', '27': 'Neamț', '28': 'Olt',
-    '29': 'Prahova', '30': 'Satu Mare', '31': 'Sălaj', '32': 'Sibiu',
-    '33': 'Suceava', '34': 'Teleorman', '35': 'Timiș', '36': 'Tulcea',
-    '37': 'Vaslui', '38': 'Vâlcea', '39': 'Vrancea',
-    '40': 'București', '41': 'București', '42': 'Diaspora',
-    '43': 'Diaspora',
+  const REGION_NAMES = {
+    1: '1 – Nord-Est',
+    2: '2 – Sud-Est',
+    3: '3 – Sud Muntenia',
+    4: '4 – Sud-Vest Oltenia',
+    5: '5 – Vest',
+    6: '6 – Nord-Vest',
+    7: '7 – Centru',
+    8: '8 – București-Ilfov',
+    99: '99 – Fără date',
   };
 
-  // Also try matching county names from text
+  // Județ → cod regiune
+  const COUNTY_TO_REGION = {
+    // 1 – Nord-Est
+    'iași': 1, 'iasi': 1, 'botoșani': 1, 'botosani': 1, 'neamț': 1, 'neamt': 1,
+    'suceava': 1, 'bacău': 1, 'bacau': 1, 'vaslui': 1,
+    // 2 – Sud-Est
+    'vrancea': 2, 'galați': 2, 'galati': 2, 'brăila': 2, 'braila': 2,
+    'tulcea': 2, 'buzău': 2, 'buzau': 2, 'constanța': 2, 'constanta': 2,
+    // 3 – Sud Muntenia
+    'argeș': 3, 'arges': 3, 'dâmbovița': 3, 'dambovita': 3, 'prahova': 3,
+    'ialomița': 3, 'ialomita': 3, 'călărași': 3, 'calarasi': 3,
+    'giurgiu': 3, 'teleorman': 3,
+    // 4 – Sud-Vest Oltenia
+    'mehedinți': 4, 'mehedinti': 4, 'gorj': 4, 'vâlcea': 4, 'valcea': 4,
+    'olt': 4, 'dolj': 4,
+    // 5 – Vest
+    'arad': 5, 'caraș-severin': 5, 'caras-severin': 5, 'hunedoara': 5,
+    'timiș': 5, 'timis': 5,
+    // 6 – Nord-Vest
+    'bihor': 6, 'bistrița-năsăud': 6, 'bistrita-nasaud': 6,
+    'cluj': 6, 'maramureș': 6, 'maramures': 6,
+    'satu mare': 6, 'sălaj': 6, 'salaj': 6,
+    // 7 – Centru
+    'alba': 7, 'sibiu': 7, 'mureș': 7, 'mures': 7,
+    'harghita': 7, 'covasna': 7, 'brașov': 7, 'brasov': 7,
+    // 8 – București-Ilfov
+    'bucurești': 8, 'bucuresti': 8, 'ilfov': 8,
+  };
+
+  // Circumscripție electorală (nr) → județ
+  const CIRC_TO_COUNTY = {
+    '1': 'alba', '2': 'arad', '3': 'argeș', '4': 'bacău',
+    '5': 'bihor', '6': 'bistrița-năsăud', '7': 'botoșani', '8': 'brașov',
+    '9': 'brăila', '10': 'buzău', '11': 'caraș-severin', '12': 'cluj',
+    '13': 'constanța', '14': 'covasna', '15': 'dâmbovița', '16': 'dolj',
+    '17': 'galați', '18': 'gorj', '19': 'harghita', '20': 'hunedoara',
+    '21': 'ialomița', '22': 'iași', '23': 'ilfov', '24': 'maramureș',
+    '25': 'mehedinți', '26': 'mureș', '27': 'neamț', '28': 'olt',
+    '29': 'prahova', '30': 'satu mare', '31': 'sălaj', '32': 'sibiu',
+    '33': 'suceava', '34': 'teleorman', '35': 'timiș', '36': 'tulcea',
+    '37': 'vaslui', '38': 'vâlcea', '39': 'vrancea',
+    '40': 'bucurești', '41': 'bucurești', '42': 'diaspora', '43': 'diaspora',
+  };
+
+  // List of all county names (with and without diacritics) for text matching
   const COUNTIES = [
     'Alba', 'Arad', 'Argeș', 'Arges', 'Bacău', 'Bacau', 'Bihor',
     'Bistrița-Năsăud', 'Bistrita-Nasaud', 'Botoșani', 'Botosani',
@@ -357,8 +398,31 @@
     'Olt', 'Prahova', 'Satu Mare', 'Sălaj', 'Salaj', 'Sibiu',
     'Suceava', 'Teleorman', 'Timiș', 'Timis', 'Tulcea',
     'Vaslui', 'Vâlcea', 'Valcea', 'Vrancea', 'București', 'Bucuresti',
-    'Diaspora'
+    'Călărași', 'Calarasi', 'Giurgiu', 'Diaspora'
   ];
+
+  // Resolve a county name (or circ number) to a region code (1-8 or 99)
+  function getRegionCode(countyOrCirc) {
+    if (!countyOrCirc) return 99;
+    // Try as county name
+    const lower = countyOrCirc.toString().toLowerCase().trim();
+    if (COUNTY_TO_REGION[lower] !== undefined) return COUNTY_TO_REGION[lower];
+    // Try as circ number
+    const county = CIRC_TO_COUNTY[lower];
+    if (county) {
+      if (county === 'diaspora') return 99;
+      if (COUNTY_TO_REGION[county] !== undefined) return COUNTY_TO_REGION[county];
+    }
+    // Try partial match on county names
+    for (const [key, code] of Object.entries(COUNTY_TO_REGION)) {
+      if (lower.includes(key) || key.includes(lower)) return code;
+    }
+    return 99;
+  }
+
+  function getRegionLabel(code) {
+    return REGION_NAMES[code] || REGION_NAMES[99];
+  }
 
   // ============================================================
   // DIACRITICS FIX: Map Windows-1250/ISO-8859-2 mojibake to proper Romanian
@@ -492,7 +556,7 @@
 
       // Get all text cells in the row
       const cells = row.querySelectorAll('td');
-      let party = '', circ = '', region = '';
+      let party = '', circ = '', countyFound = '';
 
       if (cells.length >= 2) {
         // Typical cdep.ro structure: Name | Party | Circ/Region info
@@ -520,31 +584,31 @@
           else if (!circ && /\d/.test(ct)) {
             circ = ct;
           }
-          // Might contain region info
-          else if (!region && isRegionText(ct)) {
-            region = extractRegion(ct);
+          // Might contain county info
+          else if (!countyFound && isRegionText(ct)) {
+            countyFound = extractCountyName(ct);
           }
         }
 
-        // If no separate region found, try to extract from circ text
-        if (!region && circ) {
-          region = extractRegion(circ);
+        // If no county found, try to extract from circ text
+        if (!countyFound && circ) {
+          countyFound = extractCountyName(circ);
         }
 
-        // Try to get circumscription number and look up region
-        if (!region) {
+        // Try to get circumscription number and look up county
+        if (!countyFound) {
           const circNum = extractCircNumber(circ || dl.href);
-          if (circNum && CIRC_TO_REGION[circNum]) {
-            region = CIRC_TO_REGION[circNum];
+          if (circNum && CIRC_TO_COUNTY[circNum]) {
+            countyFound = CIRC_TO_COUNTY[circNum];
           }
         }
 
         // Also try extracting from the href (has circ number)
-        if (!region) {
+        if (!countyFound) {
           const hrefMatch = dl.href.match(/cam=(\d+)|cir=(\d+)/);
           if (hrefMatch) {
             const num = hrefMatch[1] || hrefMatch[2];
-            if (CIRC_TO_REGION[num]) region = CIRC_TO_REGION[num];
+            if (CIRC_TO_COUNTY[num]) countyFound = CIRC_TO_COUNTY[num];
           }
         }
       } else {
@@ -552,13 +616,17 @@
         const parentText = fixDiacritics(row.textContent || '');
         party = extractPartyFromText(parentText);
         circ = extractCircFromText(parentText);
-        region = extractRegion(parentText);
+        countyFound = extractCountyName(parentText);
       }
+
+      // Resolve county → region code (1-8 or 99)
+      const regionCode = getRegionCode(countyFound);
 
       deputies.push({
         name: name,
         party: party || '',
-        region: fixDiacritics(region || ''),
+        regionCode: regionCode,
+        region: getRegionLabel(regionCode),
         circ: fixDiacritics(circ || ''),
         link: dl.href
       });
@@ -597,13 +665,13 @@
     return COUNTIES.some(c => text.toLowerCase().includes(c.toLowerCase()));
   }
 
-  function extractRegion(text) {
+  function extractCountyName(text) {
     if (!text) return '';
+    const lower = text.toLowerCase();
     // Try to find a county name in the text
     for (const county of COUNTIES) {
-      if (text.toLowerCase().includes(county.toLowerCase())) {
-        // Return the canonical version
-        return fixDiacritics(county);
+      if (lower.includes(county.toLowerCase())) {
+        return county.toLowerCase();
       }
     }
     return '';
@@ -700,7 +768,8 @@
 
   function populateFilters() {
     const partySet = new Set(allDeputies.map(d => d.party).filter(Boolean));
-    const regionSet = new Set(allDeputies.map(d => d.region).filter(Boolean));
+    // Regions: collect unique region codes, sort numerically
+    const regionCodes = [...new Set(allDeputies.map(d => d.regionCode))].sort((a, b) => a - b);
     const circSet = new Set(allDeputies.map(d => d.circ).filter(Boolean));
 
     const partySelect = document.getElementById('partyFilter');
@@ -712,9 +781,10 @@
 
     const regionSelect = document.getElementById('regionFilter');
     regionSelect.innerHTML = '<option value="">Toate regiunile</option>';
-    [...regionSet].sort().forEach(r => {
-      const count = allDeputies.filter(d => d.region === r).length;
-      regionSelect.innerHTML += `<option value="${esc(r)}">${esc(r)} (${count})</option>`;
+    regionCodes.forEach(code => {
+      const label = getRegionLabel(code);
+      const count = allDeputies.filter(d => d.regionCode === code).length;
+      regionSelect.innerHTML += `<option value="${code}">${esc(label)} (${count})</option>`;
     });
 
     const circSelect = document.getElementById('circFilter');
@@ -735,7 +805,7 @@
     filteredDeputies = allDeputies.filter(d => {
       if (search && !d.name.toLowerCase().includes(search) && !d.party.toLowerCase().includes(search) && !d.region.toLowerCase().includes(search)) return false;
       if (party && d.party !== party) return false;
-      if (region && d.region !== region) return false;
+      if (region && d.regionCode !== parseInt(region)) return false;
       if (circ && d.circ !== circ) return false;
       return true;
     });
@@ -757,7 +827,7 @@
     const { key, asc } = currentSort;
     filteredDeputies.sort((a, b) => {
       let va = a[key] || '', vb = b[key] || '';
-      if (key === 'idx') { va = +va; vb = +vb; }
+      if (key === 'idx' || key === 'regionCode') { va = +va; vb = +vb; }
       else { va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase(); }
       if (va < vb) return asc ? -1 : 1;
       if (va > vb) return asc ? 1 : -1;
@@ -777,7 +847,7 @@
         <td class="idx">${d.idx}</td>
         <td class="name-cell"><a href="${esc(fullLink)}" target="_blank" rel="noopener">${esc(d.name)}</a></td>
         <td><span class="party-badge ${getPartyClass(d.party)}">${esc(d.party || '-')}</span></td>
-        <td class="region-cell">${esc(d.region || '-')}</td>
+        <td class="region-cell"><strong>${d.regionCode}</strong> <span style="color:var(--text-faint);font-size:0.78rem">${esc(d.region.replace(/^\d+\s*–\s*/, ''))}</span></td>
         <td class="circ-cell">${esc(d.circ || '-')}</td>
       </tr>`;
     }).join('');
@@ -812,7 +882,7 @@
   function updateStats() {
     document.getElementById('totalCount').textContent = allDeputies.length;
     document.getElementById('partyCount').textContent = new Set(allDeputies.map(d => d.party).filter(Boolean)).size;
-    document.getElementById('regionCount').textContent = new Set(allDeputies.map(d => d.region).filter(Boolean)).size;
+    document.getElementById('regionCount').textContent = new Set(allDeputies.map(d => d.regionCode).filter(c => c !== 99)).size;
     document.getElementById('circCount').textContent = new Set(allDeputies.map(d => d.circ).filter(Boolean)).size;
   }
 
@@ -825,11 +895,12 @@
       'Nr.': d.idx,
       'Nume': d.name,
       'Grup Parlamentar': d.party,
+      'Cod Regiune': d.regionCode,
       'Regiune': d.region,
       'Circumscripție': d.circ
     }));
     const ws = XLSX.utils.json_to_sheet(data);
-    ws['!cols'] = [{ wch: 5 }, { wch: 35 }, { wch: 20 }, { wch: 20 }, { wch: 25 }];
+    ws['!cols'] = [{ wch: 5 }, { wch: 35 }, { wch: 20 }, { wch: 12 }, { wch: 22 }, { wch: 25 }];
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Deputați');
     XLSX.writeFile(wb, 'deputati_romania.xlsx');
@@ -838,9 +909,9 @@
   function exportCSV() {
     if (filteredDeputies.length === 0) return;
     const BOM = '\uFEFF';
-    const header = 'Nr.,Nume,Grup Parlamentar,Regiune,Circumscripție\n';
+    const header = 'Nr.,Nume,Grup Parlamentar,Cod Regiune,Regiune,Circumscripție\n';
     const rows = filteredDeputies.map(d =>
-      `${d.idx},"${(d.name||'').replace(/"/g,'""')}","${(d.party||'').replace(/"/g,'""')}","${(d.region||'').replace(/"/g,'""')}","${(d.circ||'').replace(/"/g,'""')}"`
+      `${d.idx},"${(d.name||'').replace(/"/g,'""')}","${(d.party||'').replace(/"/g,'""')}",${d.regionCode},"${(d.region||'').replace(/"/g,'""')}","${(d.circ||'').replace(/"/g,'""')}"`
     ).join('\n');
     const blob = new Blob([BOM + header + rows], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
