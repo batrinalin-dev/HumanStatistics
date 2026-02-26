@@ -23,9 +23,7 @@
     --ro-yellow: #fcd116;
     --ro-red: #ce1126;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--bg);
@@ -33,8 +31,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Subtle grid background */
   body::before {
     content: '';
     position: fixed;
@@ -47,34 +43,15 @@
     pointer-events: none;
     z-index: 0;
   }
-
   .app { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    animation: fadeDown 0.6s ease;
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .flag-bar {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 1.5rem;
-  }
-  .flag-bar span {
-    width: 40px; height: 6px; border-radius: 3px;
-  }
+  .header { text-align: center; margin-bottom: 2.5rem; animation: fadeDown 0.6s ease; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  .flag-bar { display: flex; justify-content: center; gap: 0; margin-bottom: 1.5rem; }
+  .flag-bar span { width: 40px; height: 6px; border-radius: 3px; }
   .flag-bar span:nth-child(1) { background: var(--ro-blue); }
   .flag-bar span:nth-child(2) { background: var(--ro-yellow); margin: 0 2px; }
   .flag-bar span:nth-child(3) { background: var(--ro-red); }
-
   .header h1 {
     font-family: 'DM Serif Display', serif;
     font-size: 2.4rem;
@@ -84,13 +61,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .header p { color: var(--text-dim); font-size: 0.95rem; }
 
-  .header p {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-  }
-
-  /* Input section */
   .input-section {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -99,18 +71,8 @@
     margin-bottom: 2rem;
     animation: fadeUp 0.5s ease 0.1s both;
   }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .input-row {
-    display: flex;
-    gap: 0.75rem;
-    align-items: stretch;
-  }
-
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+  .input-row { display: flex; gap: 0.75rem; align-items: stretch; }
   .input-row input {
     flex: 1;
     background: var(--surface2);
@@ -123,342 +85,136 @@
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .input-row input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-  }
+  .input-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   .input-row input::placeholder { color: var(--text-faint); }
 
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.4rem;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.4rem; border-radius: 10px; border: 1px solid transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .btn-primary:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 4px 16px #3b82f640; }
   .btn-primary:active { transform: translateY(0); }
   .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--text-dim);
-    border-color: var(--border);
-  }
-  .btn-outline:hover { border-color: var(--text-dim); color: var(--text); background: var(--surface2); }
-
   .btn-green { background: #16a34a; color: #fff; border-color: #16a34a; }
   .btn-green:hover { background: #15803d; }
-
   .btn-amber { background: #d97706; color: #fff; border-color: #d97706; }
   .btn-amber:hover { background: #b45309; }
-
   .btn svg { width: 16px; height: 16px; }
 
-  .hint {
-    margin-top: 0.75rem;
-    font-size: 0.8rem;
-    color: var(--text-faint);
-  }
-  .hint code {
-    background: var(--surface2);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.78rem;
-    color: var(--accent);
-  }
+  .hint { margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-faint); }
+  .hint code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 0.78rem; color: var(--accent); }
 
-  /* Status bar */
-  .status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    animation: fadeUp 0.5s ease 0.2s both;
-  }
-
-  .status-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
+  .status-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; animation: fadeUp 0.5s ease 0.2s both; }
+  .status-left { display: flex; align-items: center; gap: 1rem; }
   .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.85rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.85rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
   }
   .badge .dot { width: 7px; height: 7px; border-radius: 50%; }
   .badge .dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
-  .badge .dot.amber { background: var(--amber); }
-  .badge .dot.red { background: var(--red); }
-
   .export-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
-  /* Search & filter */
-  .filter-bar {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
-    animation: fadeUp 0.5s ease 0.25s both;
-  }
-
-  .search-box {
-    flex: 1;
-    min-width: 200px;
-    position: relative;
-  }
-  .search-box svg {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px; height: 16px;
-    color: var(--text-faint);
-  }
+  .filter-bar { display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; animation: fadeUp 0.5s ease 0.25s both; }
+  .search-box { flex: 1; min-width: 200px; position: relative; }
+  .search-box svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-faint); }
   .search-box input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.7rem 0.7rem 0.7rem 2.4rem;
-    color: var(--text);
-    font-size: 0.875rem;
-    outline: none;
-    transition: border-color 0.2s;
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.7rem 0.7rem 0.7rem 2.4rem;
+    color: var(--text); font-size: 0.875rem; outline: none; transition: border-color 0.2s;
   }
   .search-box input:focus { border-color: var(--accent); }
-
   .filter-select {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.7rem 1rem;
-    color: var(--text);
-    font-size: 0.875rem;
-    outline: none;
-    cursor: pointer;
-    min-width: 180px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.7rem 1rem; color: var(--text); font-size: 0.875rem;
+    outline: none; cursor: pointer; min-width: 180px;
   }
   .filter-select:focus { border-color: var(--accent); }
 
-  /* Table */
   .table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    animation: fadeUp 0.5s ease 0.3s both;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; animation: fadeUp 0.5s ease 0.3s both;
   }
-
   .table-scroll { overflow-x: auto; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-  }
-
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   thead th {
-    background: var(--surface2);
-    padding: 0.85rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-dim);
+    background: var(--surface2); padding: 0.85rem 1rem; text-align: left;
+    font-weight: 600; font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--text-dim);
     border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.2s;
-    white-space: nowrap;
+    position: sticky; top: 0; cursor: pointer; user-select: none;
+    transition: color 0.2s; white-space: nowrap;
   }
   thead th:hover { color: var(--accent); }
   thead th .sort-icon { margin-left: 4px; opacity: 0.4; }
   thead th.sorted .sort-icon { opacity: 1; color: var(--accent); }
-
-  tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--surface2); }
-
-  tbody td {
-    padding: 0.75rem 1rem;
-    color: var(--text);
-    white-space: nowrap;
-  }
-
+  tbody td { padding: 0.75rem 1rem; color: var(--text); white-space: nowrap; }
   .idx { color: var(--text-faint); font-size: 0.78rem; font-weight: 500; width: 40px; }
-
-  .name-cell {
-    font-weight: 600;
-    color: var(--text);
-  }
-  .name-cell a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .name-cell { font-weight: 600; color: var(--text); }
+  .name-cell a { color: inherit; text-decoration: none; transition: color 0.2s; }
   .name-cell a:hover { color: var(--accent); }
 
   .party-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
+    display: inline-block; padding: 3px 10px; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3px;
   }
-
   .party-PSD { background: #dc262620; color: #f87171; border: 1px solid #dc262630; }
   .party-PNL { background: #eab30820; color: #fbbf24; border: 1px solid #eab30830; }
   .party-USR { background: #06b6d420; color: #22d3ee; border: 1px solid #06b6d430; }
   .party-AUR { background: #a855f720; color: #c084fc; border: 1px solid #a855f730; }
   .party-UDMR { background: #22c55e20; color: #4ade80; border: 1px solid #22c55e30; }
+  .party-SOS { background: #f4364c20; color: #fb7185; border: 1px solid #f4364c30; }
+  .party-POT { background: #f97316; color: #fff; border: 1px solid #f9731630; background: #f9731620; color: #fb923c; }
   .party-MIN { background: #64748b20; color: #94a3b8; border: 1px solid #64748b30; }
   .party-NEA { background: #78716c20; color: #a8a29e; border: 1px solid #78716c30; }
   .party-default { background: #3b82f620; color: #60a5fa; border: 1px solid #3b82f630; }
 
-  .circ { color: var(--text-dim); }
+  .region-cell { color: var(--text-dim); }
+  .circ-cell { color: var(--text-faint); font-size: 0.82rem; }
 
-  /* Loading */
-  .loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem;
-    color: var(--text-dim);
-    gap: 1rem;
-  }
-
-  .spinner {
-    width: 36px; height: 36px;
-    border: 3px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
+  .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem; color: var(--text-dim); gap: 1rem; }
+  .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Empty state */
-  .empty-state {
-    text-align: center;
-    padding: 5rem 2rem;
-    color: var(--text-faint);
-  }
+  .empty-state { text-align: center; padding: 5rem 2rem; color: var(--text-faint); }
   .empty-state svg { width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.3; }
   .empty-state h3 { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 0.5rem; }
 
-  /* Error */
-  .error-box {
-    background: #7f1d1d20;
-    border: 1px solid #dc262640;
-    border-radius: 12px;
-    padding: 1.25rem;
-    color: #fca5a5;
-    margin-bottom: 1.5rem;
-  }
+  .error-box { background: #7f1d1d20; border: 1px solid #dc262640; border-radius: 12px; padding: 1.25rem; color: #fca5a5; margin-bottom: 1.5rem; }
   .error-box strong { color: #f87171; }
 
-  /* Stats bar */
-  .stats-row {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    animation: fadeUp 0.5s ease 0.15s both;
-  }
-
+  .stats-row { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; animation: fadeUp 0.5s ease 0.15s both; }
   .stat-card {
-    flex: 1;
-    min-width: 130px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    text-align: center;
+    flex: 1; min-width: 110px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 1rem 1.2rem; text-align: center;
   }
-  .stat-card .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: var(--text);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-  .stat-card .stat-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-faint);
-    font-weight: 600;
-  }
+  .stat-card .stat-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text); line-height: 1; margin-bottom: 0.25rem; }
+  .stat-card .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-faint); font-weight: 600; }
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 2rem 0 1rem;
-    color: var(--text-faint);
-    font-size: 0.78rem;
-  }
+  .footer { text-align: center; padding: 2rem 0 1rem; color: var(--text-faint); font-size: 0.78rem; }
+  .footer a { color: var(--accent); }
 
-  /* Pagination */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1.25rem;
-    border-top: 1px solid var(--border);
-  }
+  .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 1.25rem; border-top: 1px solid var(--border); }
   .page-btn {
-    width: 36px; height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.2s;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim); cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s;
   }
   .page-btn:hover { border-color: var(--accent); color: var(--accent); }
   .page-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
   .page-info { color: var(--text-faint); font-size: 0.8rem; margin: 0 0.5rem; }
 
-  /* Responsive */
+  .progress-bar { width: 100%; height: 4px; background: var(--surface2); border-radius: 2px; margin-top: 0.75rem; overflow: hidden; }
+  .progress-bar .fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; width: 0%; }
+
   @media (max-width: 768px) {
     .header h1 { font-size: 1.6rem; }
     .input-row { flex-direction: column; }
@@ -472,15 +228,12 @@
 </head>
 <body>
 <div class="app" id="app">
-
-  <!-- Header -->
   <div class="header">
     <div class="flag-bar"><span></span><span></span><span></span></div>
     <h1>Deputații României</h1>
     <p>Extractor date parlamentare — Camera Deputaților</p>
   </div>
 
-  <!-- Input Section -->
   <div class="input-section">
     <div class="input-row">
       <input type="text" id="urlInput" placeholder="Introdu URL-ul cdep.ro..."
@@ -490,35 +243,22 @@
         Extrage date
       </button>
     </div>
-    <p class="hint">Exemplu: <code>https://www.cdep.ro/pls/parlam/structura2015.de?idl=1</code> — Folosește un CORS proxy automat</p>
+    <p class="hint">Exemplu: <code>https://www.cdep.ro/pls/parlam/structura2015.de?idl=1</code></p>
+    <div class="progress-bar" id="progressBar" style="display:none;"><div class="fill" id="progressFill"></div></div>
   </div>
 
-  <!-- Error box (hidden) -->
   <div class="error-box" id="errorBox" style="display:none;"></div>
 
-  <!-- Stats -->
   <div class="stats-row" id="statsRow" style="display:none;">
-    <div class="stat-card">
-      <div class="stat-num" id="totalCount">0</div>
-      <div class="stat-label">Total Deputați</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="partyCount">0</div>
-      <div class="stat-label">Partide / Grupuri</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="circCount">0</div>
-      <div class="stat-label">Circumscripții</div>
-    </div>
+    <div class="stat-card"><div class="stat-num" id="totalCount">0</div><div class="stat-label">Total Deputați</div></div>
+    <div class="stat-card"><div class="stat-num" id="partyCount">0</div><div class="stat-label">Partide / Grupuri</div></div>
+    <div class="stat-card"><div class="stat-num" id="regionCount">0</div><div class="stat-label">Regiuni</div></div>
+    <div class="stat-card"><div class="stat-num" id="circCount">0</div><div class="stat-label">Circumscripții</div></div>
   </div>
 
-  <!-- Status & Export -->
   <div class="status-bar" id="statusBar" style="display:none;">
     <div class="status-left">
-      <div class="badge">
-        <span class="dot green" id="statusDot"></span>
-        <span id="statusText">Date încărcate</span>
-      </div>
+      <div class="badge"><span class="dot green"></span><span id="statusText">Date încărcate</span></div>
     </div>
     <div class="export-btns">
       <button class="btn btn-green" onclick="exportExcel()">
@@ -532,21 +272,16 @@
     </div>
   </div>
 
-  <!-- Filters -->
   <div class="filter-bar" id="filterBar" style="display:none;">
     <div class="search-box">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       <input type="text" id="searchInput" placeholder="Caută deputat..." oninput="applyFilters()" />
     </div>
-    <select class="filter-select" id="partyFilter" onchange="applyFilters()">
-      <option value="">Toate partidele</option>
-    </select>
-    <select class="filter-select" id="circFilter" onchange="applyFilters()">
-      <option value="">Toate circumscripțiile</option>
-    </select>
+    <select class="filter-select" id="partyFilter" onchange="applyFilters()"><option value="">Toate partidele</option></select>
+    <select class="filter-select" id="regionFilter" onchange="applyFilters()"><option value="">Toate regiunile</option></select>
+    <select class="filter-select" id="circFilter" onchange="applyFilters()"><option value="">Toate circumscripțiile</option></select>
   </div>
 
-  <!-- Table -->
   <div class="table-wrap" id="tableWrap" style="display:none;">
     <div class="table-scroll">
       <table>
@@ -555,6 +290,7 @@
             <th onclick="sortBy('idx')"># <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('name')">Nume <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('party')">Grup parlamentar <span class="sort-icon">↕</span></th>
+            <th onclick="sortBy('region')">Regiune <span class="sort-icon">↕</span></th>
             <th onclick="sortBy('circ')">Circumscripție <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
@@ -564,13 +300,11 @@
     <div class="pagination" id="pagination"></div>
   </div>
 
-  <!-- Loading -->
   <div class="loading" id="loadingState" style="display:none;">
     <div class="spinner"></div>
-    <span>Se extrag datele de pe cdep.ro...</span>
+    <span id="loadingText">Se extrag datele de pe cdep.ro...</span>
   </div>
 
-  <!-- Empty state -->
   <div class="empty-state" id="emptyState">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
@@ -580,7 +314,7 @@
   </div>
 
   <div class="footer" id="footer" style="display:none;">
-    Sursă date: <a href="https://www.cdep.ro" target="_blank" style="color:var(--accent);">cdep.ro</a> — Camera Deputaților a Parlamentului României
+    Sursă date: <a href="https://www.cdep.ro" target="_blank">cdep.ro</a> — Camera Deputaților a Parlamentului României
   </div>
 </div>
 
@@ -592,6 +326,107 @@
   let currentPage = 1;
   const perPage = 50;
 
+  // ============================================================
+  // CIRCUMSCRIPȚIE → REGIUNE MAP (Romanian counties by number)
+  // ============================================================
+  const CIRC_TO_REGION = {
+    '1': 'Alba', '2': 'Arad', '3': 'Argeș', '4': 'Bacău',
+    '5': 'Bihor', '6': 'Bistrița-Năsăud', '7': 'Botoșani', '8': 'Brașov',
+    '9': 'Brăila', '10': 'Buzău', '11': 'Caraș-Severin', '12': 'Cluj',
+    '13': 'Constanța', '14': 'Covasna', '15': 'Dâmbovița', '16': 'Dolj',
+    '17': 'Galați', '18': 'Gorj', '19': 'Harghita', '20': 'Hunedoara',
+    '21': 'Ialomița', '22': 'Iași', '23': 'Ilfov', '24': 'Maramureș',
+    '25': 'Mehedinți', '26': 'Mureș', '27': 'Neamț', '28': 'Olt',
+    '29': 'Prahova', '30': 'Satu Mare', '31': 'Sălaj', '32': 'Sibiu',
+    '33': 'Suceava', '34': 'Teleorman', '35': 'Timiș', '36': 'Tulcea',
+    '37': 'Vaslui', '38': 'Vâlcea', '39': 'Vrancea',
+    '40': 'București', '41': 'București', '42': 'Diaspora',
+    '43': 'Diaspora',
+  };
+
+  // Also try matching county names from text
+  const COUNTIES = [
+    'Alba', 'Arad', 'Argeș', 'Arges', 'Bacău', 'Bacau', 'Bihor',
+    'Bistrița-Năsăud', 'Bistrita-Nasaud', 'Botoșani', 'Botosani',
+    'Brașov', 'Brasov', 'Brăila', 'Braila', 'Buzău', 'Buzau',
+    'Caraș-Severin', 'Caras-Severin', 'Cluj', 'Constanța', 'Constanta',
+    'Covasna', 'Dâmbovița', 'Dambovita', 'Dolj', 'Galați', 'Galati',
+    'Gorj', 'Harghita', 'Hunedoara', 'Ialomița', 'Ialomita',
+    'Iași', 'Iasi', 'Ilfov', 'Maramureș', 'Maramures',
+    'Mehedinți', 'Mehedinti', 'Mureș', 'Mures', 'Neamț', 'Neamt',
+    'Olt', 'Prahova', 'Satu Mare', 'Sălaj', 'Salaj', 'Sibiu',
+    'Suceava', 'Teleorman', 'Timiș', 'Timis', 'Tulcea',
+    'Vaslui', 'Vâlcea', 'Valcea', 'Vrancea', 'București', 'Bucuresti',
+    'Diaspora'
+  ];
+
+  // ============================================================
+  // DIACRITICS FIX: Map Windows-1250/ISO-8859-2 mojibake to proper Romanian
+  // ============================================================
+  function fixDiacritics(text) {
+    if (!text) return text;
+    // Common mojibake patterns when Windows-1250 / ISO-8859-2 is read as ISO-8859-1 or Latin-1
+    const replacements = [
+      // ș (s-comma-below)
+      [/\u0219/g, 'ș'], // already correct
+      [/ş/g, 'ș'],      // s-cedilla → s-comma
+      [/º/g, 'ș'],
+      [/\u00BA/g, 'ș'],
+      // ț (t-comma-below)
+      [/\u021B/g, 'ț'], // already correct
+      [/ţ/g, 'ț'],      // t-cedilla → t-comma
+      [/þ/g, 'ț'],
+      [/\u00FE/g, 'ț'],
+      // ă
+      [/\u0103/g, 'ă'], // already correct
+      [/ã/g, 'ă'],
+      [/\u00E3/g, 'ă'],
+      // â
+      [/\u00E2/g, 'â'], // already correct
+      // î
+      [/\u00EE/g, 'î'], // already correct
+      // Uppercase variants
+      [/Ş/g, 'Ș'],
+      [/Ţ/g, 'Ț'],
+      [/\u0102/g, 'Ă'],
+      [/Ã/g, 'Ă'],
+      [/\u00C2/g, 'Â'],
+      [/\u00CE/g, 'Î'],
+      // Common double-mojibake (UTF-8 read as Windows-1252)
+      [/Ä\u0083/g, 'ă'],
+      [/Ã¢/g, 'â'],
+      [/Ã®/g, 'î'],
+      [/È\u0099/g, 'ș'],
+      [/È›/g, 'ț'],
+      [/È\u009B/g, 'ț'],
+      [/È™/g, 'ș'],
+      [/Ä‚/g, 'Ă'],
+      [/Ãž/g, 'Ț'],
+      [/Ãª/g, 'ê'],
+      // Numeric entities sometimes left over
+      [/&#x21[bB];/g, 'ț'],
+      [/&#x219;/g, 'ș'],
+      [/&#x103;/g, 'ă'],
+      [/&#xe2;/g, 'â'],
+      [/&#xee;/g, 'î'],
+      [/&#259;/g, 'ă'],
+      [/&#226;/g, 'â'],
+      [/&#238;/g, 'î'],
+      [/&#537;/g, 'ș'],
+      [/&#539;/g, 'ț'],
+      [/&#350;/g, 'Ș'],
+      [/&#354;/g, 'Ț'],
+    ];
+    let result = text;
+    for (const [pattern, replacement] of replacements) {
+      result = result.replace(pattern, replacement);
+    }
+    return result;
+  }
+
+  // ============================================================
+  // CORS PROXIES
+  // ============================================================
   const CORS_PROXIES = [
     url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
     url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
@@ -601,134 +436,194 @@
   async function fetchWithProxy(url) {
     for (let i = 0; i < CORS_PROXIES.length; i++) {
       try {
+        updateProgress(((i + 1) / CORS_PROXIES.length) * 30);
         const proxyUrl = CORS_PROXIES[i](url);
         const resp = await fetch(proxyUrl, { signal: AbortSignal.timeout(15000) });
         if (resp.ok) {
-          const text = await resp.text();
+          // Try to get the response as ArrayBuffer to handle encoding
+          const buffer = await resp.arrayBuffer();
+          // Try UTF-8 first
+          let text = new TextDecoder('utf-8').decode(buffer);
+          // If it looks garbled, try windows-1250
+          if (text.includes('Ã') && text.includes('Å') || text.includes('\ufffd')) {
+            text = new TextDecoder('windows-1250').decode(buffer);
+          }
+          // Also try iso-8859-2 if still garbled
+          if (text.includes('\ufffd')) {
+            text = new TextDecoder('iso-8859-2').decode(buffer);
+          }
           if (text.length > 500) return text;
         }
       } catch (e) {
         console.warn(`Proxy ${i} failed:`, e.message);
       }
     }
-    throw new Error('Toate proxy-urile CORS au eșuat. Încearcă din nou sau accesează pagina direct.');
+    throw new Error('Toate proxy-urile CORS au eșuat. Verifică conexiunea la internet sau încearcă mai târziu.');
   }
 
+  // ============================================================
+  // PARSE LOGIC — handles cdep.ro deputy list pages
+  // ============================================================
   function parseDeputies(html) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const deputies = [];
 
-    // The page lists deputies in table rows or links
-    // Pattern: links to individual deputy pages with name
-    const links = doc.querySelectorAll('a[href*="structura2015.mp?"]');
+    // Strategy: find all links pointing to individual deputy pages (.mp?)
+    const allLinks = doc.querySelectorAll('a');
+    const deputyLinks = [];
 
-    if (links.length === 0) {
-      // Try alternate parsing — look for table rows
-      const rows = doc.querySelectorAll('table tr');
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        if (cells.length >= 2) {
-          const nameLink = cells[0]?.querySelector('a') || cells[1]?.querySelector('a');
-          if (nameLink && nameLink.href.includes('structura')) {
-            const name = nameLink.textContent.trim();
-            if (name && name.length > 2) {
-              deputies.push({
-                name: name,
-                party: cells[1]?.textContent?.trim() || '',
-                circ: cells[2]?.textContent?.trim() || '',
-                link: nameLink.getAttribute('href') || ''
-              });
-            }
-          }
-        }
-      });
-    }
-
-    // Primary parsing: look for the deputy list pattern
-    if (deputies.length === 0) {
-      // cdep.ro uses <td> with class or within specific tables
-      const allTables = doc.querySelectorAll('table');
-      for (const table of allTables) {
-        const rows = table.querySelectorAll('tr');
-        for (const row of rows) {
-          const tds = row.querySelectorAll('td');
-          if (tds.length >= 1) {
-            const a = row.querySelector('a[href*=".mp"]') || row.querySelector('a[href*="structura"]');
-            if (a) {
-              const name = a.textContent.trim();
-              if (name.length > 3 && /[A-ZĂÂÎȘȚ]/.test(name)) {
-                let party = '', circ = '';
-                // Try to extract party and circ from sibling cells
-                tds.forEach((td, idx) => {
-                  const text = td.textContent.trim();
-                  if (td.contains(a)) return;
-                  if (!party && (text.includes('PSD') || text.includes('PNL') || text.includes('USR') ||
-                      text.includes('AUR') || text.includes('UDMR') || text.includes('Minor') ||
-                      text.includes('neafiliat') || text.length < 30)) {
-                    if (idx > 0) party = text;
-                  }
-                  if (!circ && text.includes('Nr.')) circ = text;
-                  if (!circ && /\d+/.test(text) && text.length < 40 && idx > 1) circ = text;
-                });
-                deputies.push({
-                  name,
-                  party: party || 'Nedeterminat',
-                  circ: circ || '-',
-                  link: a.getAttribute('href') || ''
-                });
-              }
-            }
-          }
-        }
+    allLinks.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      const text = a.textContent.trim();
+      // Deputy links contain structura2015.mp or just .mp? with an id
+      if ((href.includes('.mp?') || href.includes('structura2015.mp')) && text.length > 3) {
+        deputyLinks.push({ element: a, href, text });
       }
-    }
+    });
 
-    // Also try: the page may use <div> or <span> patterns
-    if (deputies.length === 0) {
-      // Broad search for all links that look like deputy links
-      const allLinks = doc.querySelectorAll('a');
-      allLinks.forEach(a => {
-        const href = a.getAttribute('href') || '';
-        const name = a.textContent.trim();
-        if ((href.includes('.mp?') || href.includes('structura')) && name.length > 4 && /[A-ZĂÂÎȘȚ]/.test(name[0])) {
-          // Try to get context from parent
-          const parent = a.closest('tr') || a.closest('td') || a.parentElement;
-          const parentText = parent ? parent.textContent : '';
-          deputies.push({
-            name,
-            party: extractParty(parentText, name),
-            circ: extractCirc(parentText),
-            link: href
-          });
+    for (const dl of deputyLinks) {
+      const a = dl.element;
+      let name = fixDiacritics(dl.text);
+
+      // Navigate up to find the row (could be <tr> or parent container)
+      const row = a.closest('tr') || a.closest('div') || a.parentElement?.parentElement;
+      if (!row) continue;
+
+      // Get all text cells in the row
+      const cells = row.querySelectorAll('td');
+      let party = '', circ = '', region = '';
+
+      if (cells.length >= 2) {
+        // Typical cdep.ro structure: Name | Party | Circ/Region info
+        const cellTexts = Array.from(cells).map(td => fixDiacritics(td.textContent.trim()));
+
+        // Find which cell contains the name
+        let nameIdx = -1;
+        for (let i = 0; i < cellTexts.length; i++) {
+          if (cellTexts[i].includes(name.substring(0, 5)) || cells[i].contains(a)) {
+            nameIdx = i;
+            break;
+          }
         }
+
+        // Extract party & circ from remaining cells
+        for (let i = 0; i < cellTexts.length; i++) {
+          if (i === nameIdx) continue;
+          const ct = cellTexts[i];
+
+          // Check if it's a party identifier
+          if (!party && isPartyText(ct)) {
+            party = normalizeParty(ct);
+          }
+          // Check if it's a circumscripție
+          else if (!circ && /\d/.test(ct)) {
+            circ = ct;
+          }
+          // Might contain region info
+          else if (!region && isRegionText(ct)) {
+            region = extractRegion(ct);
+          }
+        }
+
+        // If no separate region found, try to extract from circ text
+        if (!region && circ) {
+          region = extractRegion(circ);
+        }
+
+        // Try to get circumscription number and look up region
+        if (!region) {
+          const circNum = extractCircNumber(circ || dl.href);
+          if (circNum && CIRC_TO_REGION[circNum]) {
+            region = CIRC_TO_REGION[circNum];
+          }
+        }
+
+        // Also try extracting from the href (has circ number)
+        if (!region) {
+          const hrefMatch = dl.href.match(/cam=(\d+)|cir=(\d+)/);
+          if (hrefMatch) {
+            const num = hrefMatch[1] || hrefMatch[2];
+            if (CIRC_TO_REGION[num]) region = CIRC_TO_REGION[num];
+          }
+        }
+      } else {
+        // Fallback: parse from parent text
+        const parentText = fixDiacritics(row.textContent || '');
+        party = extractPartyFromText(parentText);
+        circ = extractCircFromText(parentText);
+        region = extractRegion(parentText);
+      }
+
+      deputies.push({
+        name: name,
+        party: party || '',
+        region: fixDiacritics(region || ''),
+        circ: fixDiacritics(circ || ''),
+        link: dl.href
       });
     }
 
-    // Deduplicate
+    // Deduplicate by name
     const seen = new Set();
     return deputies.filter(d => {
-      const key = d.name;
-      if (seen.has(key)) return false;
-      seen.add(key);
+      if (seen.has(d.name)) return false;
+      seen.add(d.name);
       return true;
     });
   }
 
-  function extractParty(text, name) {
-    const parties = ['PSD', 'PNL', 'USR', 'AUR', 'UDMR'];
+  function isPartyText(text) {
+    const parties = ['PSD', 'PNL', 'USR', 'AUR', 'UDMR', 'SOS', 'POT', 'neafiliat', 'minorit', 'Grupul'];
     const lower = text.toLowerCase();
-    for (const p of parties) {
-      if (lower.includes(p.toLowerCase())) return p;
+    return parties.some(p => lower.includes(p.toLowerCase()));
+  }
+
+  function normalizeParty(text) {
+    const t = text.toUpperCase();
+    if (t.includes('PSD')) return 'PSD';
+    if (t.includes('PNL')) return 'PNL';
+    if (t.includes('USR')) return 'USR';
+    if (t.includes('AUR')) return 'AUR';
+    if (t.includes('UDMR')) return 'UDMR';
+    if (t.includes('SOS')) return 'SOS România';
+    if (t.includes('POT')) return 'POT';
+    if (text.toLowerCase().includes('minorit')) return 'Minorități';
+    if (text.toLowerCase().includes('neafiliat')) return 'Neafiliat';
+    return text.trim();
+  }
+
+  function isRegionText(text) {
+    return COUNTIES.some(c => text.toLowerCase().includes(c.toLowerCase()));
+  }
+
+  function extractRegion(text) {
+    if (!text) return '';
+    // Try to find a county name in the text
+    for (const county of COUNTIES) {
+      if (text.toLowerCase().includes(county.toLowerCase())) {
+        // Return the canonical version
+        return fixDiacritics(county);
+      }
     }
-    if (lower.includes('minorit')) return 'Minorități';
-    if (lower.includes('neafiliat')) return 'Neafiliat';
     return '';
   }
 
-  function extractCirc(text) {
-    const match = text.match(/Nr\.\s*\d+/i) || text.match(/Circ[^:]*:\s*([^\n,]+)/i);
-    return match ? match[0] : '';
+  function extractCircNumber(text) {
+    if (!text) return '';
+    const match = text.match(/(?:Nr\.?\s*|cir=|#)\s*(\d+)/i) || text.match(/(\d+)/);
+    return match ? match[1] : '';
+  }
+
+  function extractPartyFromText(text) {
+    if (!text) return '';
+    if (isPartyText(text)) return normalizeParty(text);
+    return '';
+  }
+
+  function extractCircFromText(text) {
+    const match = text.match(/Nr\.?\s*\d+[^\n]*/i);
+    return match ? match[0].trim() : '';
   }
 
   function getPartyClass(party) {
@@ -739,9 +634,21 @@
     if (p.includes('USR')) return 'party-USR';
     if (p.includes('AUR')) return 'party-AUR';
     if (p.includes('UDMR')) return 'party-UDMR';
+    if (p.includes('SOS')) return 'party-SOS';
+    if (p.includes('POT')) return 'party-POT';
     if (p.includes('MINOR')) return 'party-MIN';
     if (p.includes('NEAFIL')) return 'party-NEA';
     return 'party-default';
+  }
+
+  // ============================================================
+  // UI & FETCH
+  // ============================================================
+  function updateProgress(pct) {
+    const bar = document.getElementById('progressBar');
+    const fill = document.getElementById('progressFill');
+    bar.style.display = 'block';
+    fill.style.width = Math.min(pct, 100) + '%';
   }
 
   async function fetchDeputies() {
@@ -750,26 +657,32 @@
 
     showLoading(true);
     hideError();
+    updateProgress(5);
 
     try {
+      document.getElementById('loadingText').textContent = 'Se conectează la cdep.ro...';
       const html = await fetchWithProxy(url);
+      updateProgress(50);
+
+      document.getElementById('loadingText').textContent = 'Se parsează datele...';
       allDeputies = parseDeputies(html);
+      updateProgress(80);
 
       if (allDeputies.length === 0) {
-        showError('Nu s-au putut extrage deputați din pagina dată. Verifică URL-ul sau structura paginii.');
+        showError('Nu s-au putut extrage deputați din pagina dată. Verifică URL-ul sau structura paginii. Pagina trebuie să fie o listă de deputați de pe cdep.ro.');
         showLoading(false);
+        document.getElementById('progressBar').style.display = 'none';
         return;
       }
 
-      // Add index
       allDeputies.forEach((d, i) => d.idx = i + 1);
+      updateProgress(90);
 
-      // Populate filters
       populateFilters();
       applyFilters();
       updateStats();
+      updateProgress(100);
 
-      // Show UI
       document.getElementById('statsRow').style.display = 'flex';
       document.getElementById('statusBar').style.display = 'flex';
       document.getElementById('filterBar').style.display = 'flex';
@@ -777,44 +690,56 @@
       document.getElementById('emptyState').style.display = 'none';
       document.getElementById('footer').style.display = 'block';
 
+      setTimeout(() => { document.getElementById('progressBar').style.display = 'none'; }, 500);
     } catch (err) {
       showError(`Eroare la extragerea datelor: ${err.message}`);
+      document.getElementById('progressBar').style.display = 'none';
     }
-
     showLoading(false);
   }
 
   function populateFilters() {
     const partySet = new Set(allDeputies.map(d => d.party).filter(Boolean));
+    const regionSet = new Set(allDeputies.map(d => d.region).filter(Boolean));
     const circSet = new Set(allDeputies.map(d => d.circ).filter(Boolean));
 
     const partySelect = document.getElementById('partyFilter');
     partySelect.innerHTML = '<option value="">Toate partidele</option>';
     [...partySet].sort().forEach(p => {
       const count = allDeputies.filter(d => d.party === p).length;
-      partySelect.innerHTML += `<option value="${p}">${p} (${count})</option>`;
+      partySelect.innerHTML += `<option value="${esc(p)}">${esc(p)} (${count})</option>`;
+    });
+
+    const regionSelect = document.getElementById('regionFilter');
+    regionSelect.innerHTML = '<option value="">Toate regiunile</option>';
+    [...regionSet].sort().forEach(r => {
+      const count = allDeputies.filter(d => d.region === r).length;
+      regionSelect.innerHTML += `<option value="${esc(r)}">${esc(r)} (${count})</option>`;
     });
 
     const circSelect = document.getElementById('circFilter');
     circSelect.innerHTML = '<option value="">Toate circumscripțiile</option>';
     [...circSet].sort().forEach(c => {
-      circSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      circSelect.innerHTML += `<option value="${esc(c)}">${esc(c)}</option>`;
     });
   }
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
   function applyFilters() {
     const search = document.getElementById('searchInput').value.toLowerCase();
     const party = document.getElementById('partyFilter').value;
+    const region = document.getElementById('regionFilter').value;
     const circ = document.getElementById('circFilter').value;
 
     filteredDeputies = allDeputies.filter(d => {
-      if (search && !d.name.toLowerCase().includes(search)) return false;
+      if (search && !d.name.toLowerCase().includes(search) && !d.party.toLowerCase().includes(search) && !d.region.toLowerCase().includes(search)) return false;
       if (party && d.party !== party) return false;
+      if (region && d.region !== region) return false;
       if (circ && d.circ !== circ) return false;
       return true;
     });
 
-    // Sort
     sortData();
     currentPage = 1;
     renderTable();
@@ -822,12 +747,8 @@
   }
 
   function sortBy(key) {
-    if (currentSort.key === key) {
-      currentSort.asc = !currentSort.asc;
-    } else {
-      currentSort.key = key;
-      currentSort.asc = true;
-    }
+    if (currentSort.key === key) currentSort.asc = !currentSort.asc;
+    else { currentSort.key = key; currentSort.asc = true; }
     sortData();
     renderTable();
   }
@@ -835,9 +756,8 @@
   function sortData() {
     const { key, asc } = currentSort;
     filteredDeputies.sort((a, b) => {
-      let va = a[key] || '';
-      let vb = b[key] || '';
-      if (key === 'idx') { va = Number(va); vb = Number(vb); }
+      let va = a[key] || '', vb = b[key] || '';
+      if (key === 'idx') { va = +va; vb = +vb; }
       else { va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase(); }
       if (va < vb) return asc ? -1 : 1;
       if (va > vb) return asc ? 1 : -1;
@@ -855,9 +775,10 @@
       const fullLink = d.link.startsWith('http') ? d.link : `https://www.cdep.ro/pls/parlam/${d.link}`;
       return `<tr>
         <td class="idx">${d.idx}</td>
-        <td class="name-cell"><a href="${fullLink}" target="_blank" rel="noopener">${d.name}</a></td>
-        <td><span class="party-badge ${getPartyClass(d.party)}">${d.party || '-'}</span></td>
-        <td class="circ">${d.circ || '-'}</td>
+        <td class="name-cell"><a href="${esc(fullLink)}" target="_blank" rel="noopener">${esc(d.name)}</a></td>
+        <td><span class="party-badge ${getPartyClass(d.party)}">${esc(d.party || '-')}</span></td>
+        <td class="region-cell">${esc(d.region || '-')}</td>
+        <td class="circ-cell">${esc(d.circ || '-')}</td>
       </tr>`;
     }).join('');
 
@@ -867,9 +788,7 @@
   function renderPagination(totalPages) {
     const pag = document.getElementById('pagination');
     if (totalPages <= 1) { pag.innerHTML = ''; return; }
-
     let html = `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&laquo;</button>`;
-
     const range = 2;
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= currentPage - range && i <= currentPage + range)) {
@@ -878,7 +797,6 @@
         html += `<span class="page-info">…</span>`;
       }
     }
-
     html += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>&raquo;</button>`;
     pag.innerHTML = html;
   }
@@ -894,27 +812,24 @@
   function updateStats() {
     document.getElementById('totalCount').textContent = allDeputies.length;
     document.getElementById('partyCount').textContent = new Set(allDeputies.map(d => d.party).filter(Boolean)).size;
+    document.getElementById('regionCount').textContent = new Set(allDeputies.map(d => d.region).filter(Boolean)).size;
     document.getElementById('circCount').textContent = new Set(allDeputies.map(d => d.circ).filter(Boolean)).size;
   }
 
+  // ============================================================
+  // EXPORT
+  // ============================================================
   function exportExcel() {
     if (filteredDeputies.length === 0) return;
     const data = filteredDeputies.map(d => ({
       'Nr.': d.idx,
       'Nume': d.name,
       'Grup Parlamentar': d.party,
+      'Regiune': d.region,
       'Circumscripție': d.circ
     }));
     const ws = XLSX.utils.json_to_sheet(data);
-
-    // Column widths
-    ws['!cols'] = [
-      { wch: 5 },
-      { wch: 35 },
-      { wch: 20 },
-      { wch: 25 }
-    ];
-
+    ws['!cols'] = [{ wch: 5 }, { wch: 35 }, { wch: 20 }, { wch: 20 }, { wch: 25 }];
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Deputați');
     XLSX.writeFile(wb, 'deputati_romania.xlsx');
@@ -923,11 +838,10 @@
   function exportCSV() {
     if (filteredDeputies.length === 0) return;
     const BOM = '\uFEFF';
-    const header = 'Nr.,Nume,Grup Parlamentar,Circumscripție\n';
+    const header = 'Nr.,Nume,Grup Parlamentar,Regiune,Circumscripție\n';
     const rows = filteredDeputies.map(d =>
-      `${d.idx},"${d.name.replace(/"/g, '""')}","${(d.party || '').replace(/"/g, '""')}","${(d.circ || '').replace(/"/g, '""')}"`
+      `${d.idx},"${(d.name||'').replace(/"/g,'""')}","${(d.party||'').replace(/"/g,'""')}","${(d.region||'').replace(/"/g,'""')}","${(d.circ||'').replace(/"/g,'""')}"`
     ).join('\n');
-
     const blob = new Blob([BOM + header + rows], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -936,6 +850,9 @@
     URL.revokeObjectURL(link.href);
   }
 
+  // ============================================================
+  // UI HELPERS
+  // ============================================================
   function showLoading(show) {
     document.getElementById('loadingState').style.display = show ? 'flex' : 'none';
     document.getElementById('fetchBtn').disabled = show;
@@ -948,11 +865,8 @@
     box.style.display = 'block';
   }
 
-  function hideError() {
-    document.getElementById('errorBox').style.display = 'none';
-  }
+  function hideError() { document.getElementById('errorBox').style.display = 'none'; }
 
-  // Enter key support
   document.getElementById('urlInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') fetchDeputies();
   });
